@@ -20,12 +20,13 @@ executable postit
   build-depends:       base >= 4.7 && < 5
                      , gi-gtk == 3.0.*
                      , hashable
-                     , haskell-gi-base == 0.21.*
+                     , haskell-gi-base == 0.20.*
                      , gi-glib == 2.0.*
                      , gi-gdk == 3.0.*
                      , gi-gdkpixbuf == 2.0.*
                      , gi-gio
                      , mtl
+                     , reactive-banana-gi-gtk
                      , text
                      , transformers == 0.5.*
                      , unordered-containers

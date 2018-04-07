@@ -140,18 +140,22 @@ createPostitWindow ref (WD i s w h t) = do
 
   #add win box
 
-  ctx <- Gtk.widgetGetStyleContext textAr
-  bgp <- Gtk.cssProviderNew
-  Gtk.cssProviderLoadFromData bgp (encodeUtf8 bgCss)
-  Gtk.styleContextAddProvider ctx bgp (fromIntegral Gtk.STYLE_PROVIDER_PRIORITY_USER :: Word32)
+  styleWidget textAr bgCss
 
-
-  tctx <- Gtk.widgetGetStyleContext toolbar
-  tlp <- Gtk.cssProviderNew
-  Gtk.cssProviderLoadFromData tlp (encodeUtf8 tlCss)
-  Gtk.styleContextAddProvider tctx tlp (fromIntegral Gtk.STYLE_PROVIDER_PRIORITY_USER :: Word32)
+  styleWidget toolbar tlCss
+  styleWidget buttAdd tlCss
+  styleWidget buttDel tlCss
+  styleWidget buttColor tlCss
 
   return win
+
+styleWidget :: (Gtk.IsWidget w) => w -> Text -> IO ()
+styleWidget w css = do
+  ctx <- Gtk.widgetGetStyleContext w
+  provider <- Gtk.cssProviderNew
+  Gtk.cssProviderLoadFromData provider (encodeUtf8 css)
+  Gtk.styleContextAddProvider ctx provider (fromIntegral Gtk.STYLE_PROVIDER_PRIORITY_USER :: Word32)
+
 
 
 main :: IO ()
