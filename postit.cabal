@@ -26,7 +26,7 @@ executable postit
                      , gi-gdkpixbuf == 2.0.*
                      , gi-gio
                      , mtl
-                     , reactive-banana-gi-gtk
+                     , reactive-banana-gi-gtk >= 0.2
                      , text
                      , transformers == 0.5.*
                      , unordered-containers
